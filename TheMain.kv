@@ -1,0 +1,48 @@
+<FrontPage>:
+    cols: 1
+    search_input : search_input
+    search_button : search_button
+    summary_button : summary_button
+    
+    GridLayout:
+        cols: 1
+        size: root.width - 200, root.height -200
+        pos: 100, 100
+        
+        Label:
+            text : "Custom News"
+        
+        Label:
+            text : "La Une"
+    
+        Button:
+            text : "Summary"
+            on_press : root.changer()
+            id : summary_button
+        
+        TextInput:
+            id : search_input
+            multiline:False
+            
+        Button:
+            text : "Search"
+            on_press: root.search(search_input)
+            id: search_button
+
+        Label:
+            text : "Sites Status"
+
+        Label:
+            text : "Network status"
+        
+
+<SummaryPage>:
+
+    BoxLayout:   
+        Button:
+            text : "FrontPage"
+            on_press : root.changer()
+        
+        
+            
+        
