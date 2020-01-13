@@ -18,8 +18,9 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.boxlayout import BoxLayout   # one of many layout structures
-from kivy.uix.label import Label
 from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.image import Image
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.textinput import TextInput
 from kivy.properties import ObjectProperty, StringProperty, NumericProperty
@@ -35,6 +36,7 @@ class TheMain(App):
                 sm = ScreenManager()
                 sm.add_widget(FrontPage(name="FrontPage"))
                 sm.add_widget(SummaryPage(name="SummaryPage"))
+                sm.add_widget(SitesStatusPage(name="SitesStatusPage"))
                 #sm.add_widget(ArticleBehavior)
                 return sm
 
@@ -46,7 +48,8 @@ class FrontPage(GridLayout, Screen):
         search_input = ObjectProperty(None)
         search_button = ObjectProperty(None)
         summary_button = ObjectProperty(None)
-        
+        sites_status_button = ObjectProperty(None)
+
         def __init__(self, **kwargs):
                 super(FrontPage, self).__init__(**kwargs)
 
@@ -73,9 +76,9 @@ class FrontPage(GridLayout, Screen):
                 self.search_button.text = "Got searched"
                 print(self.search_input.text)
         
-        def changer(self, *args):
-                print("changing")
-                self.manager.current = 'SummaryPage'
+        def changer(self, *args, target=None):
+                print(f"changing to {target} ")
+                self.manager.current = str(target)
 
 """class ArticleBehavior(ButtonBehavior):
         def __init__(self, **kwargs):
@@ -106,12 +109,12 @@ class SummaryPage(GridLayout, Screen):
                         name = f'{i}'
                         text = f'[ref={d[1]}]{d[0]}[/ref]'
                         self.reference = Label(text=text, markup=True, on_ref_press=self.browser)
-                        self.add_widget(self.reference)        
+                        self.add_widget(self.reference)
        
 
-        def changer(self, *args):
-                print("changed")
-                self.manager.current = "FrontPage"
+        def changer(self, *args, target=None):
+                print(f"changing to {target} ")
+                self.manager.current = str(target)
 
         def browser(self, *args):
                 import webbrowser
@@ -122,6 +125,47 @@ class SummaryPage(GridLayout, Screen):
 class UpdateSource(Button):
         def __init__(self, source, **kwargs):
                 source = self.source
+
+
+class SitesStatusPage(GridLayout, Screen):
+        """ here we try to mix up grids with 1 and 2 cols.
+        Each Site Button should display the site name and a refresh button next to it"""
+        def __init__(self, **kwargs):
+                super(SitesStatusPage, self).__init__(**kwargs)
+
+                self.cols = 2
+                configured_sites = data.keys()
+                self.sites = []
+                self.refresh_btns = []
+                for site in configured_sites:
+                        #Add "ButtonGrid"
+                        self.site_box = GridLayout()
+                        self.site_box.cols = 2
+                        
+                        #Add site name
+                        name = site
+                        text = f'[ref={site}]{site}[/ref]'
+                        self.site_box.reference = Label(text=text, markup=True, on_ref_press=self.browser)
+
+                        #Add refresh button to each reference -currently adds a general refresh button
+                        self.site_box.reference.refresh_site_status_btn = Button()
+                        self.site_box.reference.refresh_site_status_btn.refresh_logo = Image(source=os.path.join("icon", "refresh_logo.png"))
+                        self.site_box.reference.refresh_site_status_btn.add_widget(self.site_box.reference.refresh_site_status_btn.refresh_logo)
+                        self.site_box.reference.refresh_site_status_btn.bind(on_press=lambda x: self.refresh_site_status(site=site))
+                        
+                        self.site_box.reference.add_widget(self.site_box.reference.refresh_site_status_btn)
+                        self.add_widget(self.site_box.reference)
+
+        def changer(self, *args, target=None):
+                print(f"changing to {target} ")
+                self.manager.current = str(target)
+
+        def browser(self, *args):
+                import webbrowser
+                webbrowser.open(args[1])
+        
+        def refresh_site_status(self, *args, site=""):
+                print(f"refreshing {site}")
 
 
 if __name__ == "__main__":
