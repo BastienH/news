@@ -3,7 +3,6 @@
     search_input : search_input
     search_button : search_button
     summary_button : summary_button
-    sites_status_button : sites_status_button
     
     GridLayout:
         cols: 1
@@ -18,7 +17,7 @@
     
         Button:
             text : "Summary"
-            on_press : root.changer(target="SummaryPage")
+            on_press : root.changer()
             id : summary_button
         
         TextInput:
@@ -32,29 +31,13 @@
 
         Button:
             text : "Sites Status"
-            on_press: root.changer(target="SitesStatusPage")
-            id : sites_status_button
+			on_press: root.refresh_all()
+			id: refresh_button
 
         Label:
             text : "Network status"
         
 
-<SummaryPage>:
-    BoxLayout:   
-        Button:
-            text : "FrontPage"
-            on_press : root.changer(target="FrontPage")
-            id: frontPageButton
-
-<SitesStatusPage>:
-    GridLayout:
-        cols:1
-        Button:
-            text : "FrontPage"
-            on_press : root.changer(target="FrontPage")
-            id : frontPageButton
-
-        
         
             
         
