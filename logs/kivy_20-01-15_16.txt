@@ -1,0 +1,108 @@
+[INFO   ] Logger: Record log in C:/Users/bharkins/Desktop/news\logs\kivy_20-01-15_16.txt
+[INFO   ] deps: Successfully imported "kivy_deps.gstreamer" 0.2.0
+[INFO   ] deps: Successfully imported "kivy_deps.angle" 0.2.0
+[INFO   ] deps: Successfully imported "kivy_deps.glew" 0.2.0
+[INFO   ] deps: Successfully imported "kivy_deps.sdl2" 0.2.0
+[INFO   ] Kivy: v1.11.1
+[INFO   ] Kivy: Installed at "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\__init__.py"
+[INFO   ] Python: v3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)]
+[INFO   ] Python: Interpreter at "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\python.exe"
+[INFO   ] Factory: 184 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_gif (img_pil, img_ffpyplayer ignored)
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL" graphics system
+[INFO   ] GL: GLEW initialization succeeded
+[INFO   ] GL: Backend used <glew>
+[INFO   ] GL: OpenGL version <b'4.5.0 NVIDIA 358.87'>
+[INFO   ] GL: OpenGL vendor <b'NVIDIA Corporation'>
+[INFO   ] GL: OpenGL renderer <b'Quadro K2200/PCIe/SSE2'>
+[INFO   ] GL: OpenGL parsed version: 4, 5
+[INFO   ] GL: Shading version <b'4.50 NVIDIA'>
+[INFO   ] GL: Texture max size <16384>
+[INFO   ] GL: Texture max units <32>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[INFO   ] Text: Provider: sdl2
+[ERROR  ] Image: Error reading file icon\refresh_logo.png
+[ERROR  ] Image: Error reading file icon\refresh_logo.png
+[ERROR  ] Image: Error reading file icon\refresh_logo.png
+[ERROR  ] Image: Error reading file icon\refresh_logo.png
+[ERROR  ] Image: Error reading file icon\refresh_logo.png
+[ERROR  ] Image: Error reading file icon\refresh_logo.png
+[ERROR  ] Image: Error reading file icon\refresh_logo.png
+[ERROR  ] Image: Error reading file icon\refresh_logo.png
+[ERROR  ] Image: Error reading file icon\refresh_logo.png
+[INFO   ] Base: Start application main loop
+[INFO   ] GL: NPOT texture support is available
+[INFO   ] Base: Leaving application in progress...
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "<input>", line 1, in <module>
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\JetBrains\PyCharm Community Edition 2019.3.1\plugins\python-ce\helpers\pydev\_pydev_bundle\pydev_umd.py", line 197, in runfile
+[WARNING] stderr:     pydev_imports.execfile(filename, global_vars, local_vars)  # execute the script
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\JetBrains\PyCharm Community Edition 2019.3.1\plugins\python-ce\helpers\pydev\_pydev_imps\_pydev_execfile.py", line 18, in execfile
+[WARNING] stderr:     exec(compile(contents+"\n", file, 'exec'), glob, loc)
+[WARNING] stderr:   File "C:/Users/bharkins/Desktop/news/reader.py", line 224, in <module>
+[WARNING] stderr:     TheMain().run()
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\app.py", line 855, in run
+[WARNING] stderr:     runTouchApp()
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\base.py", line 504, in runTouchApp
+[WARNING] stderr:     EventLoop.window.mainloop()
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\core\window\window_sdl2.py", line 747, in mainloop
+[WARNING] stderr:     self._mainloop()
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\core\window\window_sdl2.py", line 479, in _mainloop
+[WARNING] stderr:     EventLoop.idle()
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\base.py", line 342, in idle
+[WARNING] stderr:     self.dispatch_input()
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\base.py", line 327, in dispatch_input
+[WARNING] stderr:     post_dispatch_input(*pop(0))
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\base.py", line 233, in post_dispatch_input
+[WARNING] stderr:     listener.dispatch('on_motion', etype, me)
+[WARNING] stderr:   File "kivy\_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\core\window\__init__.py", line 1406, in on_motion
+[WARNING] stderr:     self.dispatch('on_touch_up', me)
+[WARNING] stderr:   File "kivy\_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\core\window\__init__.py", line 1442, in on_touch_up
+[WARNING] stderr:     if w.dispatch('on_touch_up', touch):
+[WARNING] stderr:   File "kivy\_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\screenmanager.py", line 1201, in on_touch_up
+[WARNING] stderr:     return super(ScreenManager, self).on_touch_up(touch)
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\widget.py", line 571, in on_touch_up
+[WARNING] stderr:     if child.dispatch('on_touch_up', touch):
+[WARNING] stderr:   File "kivy\_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\relativelayout.py", line 304, in on_touch_up
+[WARNING] stderr:     ret = super(RelativeLayout, self).on_touch_up(touch)
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\widget.py", line 571, in on_touch_up
+[WARNING] stderr:     if child.dispatch('on_touch_up', touch):
+[WARNING] stderr:   File "kivy\_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\scrollview.py", line 895, in on_touch_up
+[WARNING] stderr:     if self.dispatch('on_scroll_stop', touch):
+[WARNING] stderr:   File "kivy\_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\scrollview.py", line 934, in on_scroll_stop
+[WARNING] stderr:     self.simulate_touch_down(touch)
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\scrollview.py", line 642, in simulate_touch_down
+[WARNING] stderr:     ret = super(ScrollView, self).on_touch_down(touch)
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\widget.py", line 549, in on_touch_down
+[WARNING] stderr:     if child.dispatch('on_touch_down', touch):
+[WARNING] stderr:   File "kivy\_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\widget.py", line 549, in on_touch_down
+[WARNING] stderr:     if child.dispatch('on_touch_down', touch):
+[WARNING] stderr:   File "kivy\_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\behaviors\button.py", line 151, in on_touch_down
+[WARNING] stderr:     self.dispatch('on_press')
+[WARNING] stderr:   File "kivy\_event.pyx", line 703, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "kivy\_event.pyx", line 1214, in kivy._event.EventObservers.dispatch
+[WARNING] stderr:   File "kivy\_event.pyx", line 1138, in kivy._event.EventObservers._dispatch
+[WARNING] stderr:   File "C:/Users/bharkins/Desktop/news/reader.py", line 161, in <lambda>
+[WARNING] stderr:     self.menu_btn.bind(on_press=lambda x: self.changer("FrontPage"))
+[WARNING] stderr:   File "C:/Users/bharkins/Desktop/news/reader.py", line 170, in changer
+[WARNING] stderr:     self.manager.current = str(target)
+[WARNING] stderr:   File "kivy\properties.pyx", line 497, in kivy.properties.Property.__set__
+[WARNING] stderr:   File "kivy\properties.pyx", line 544, in kivy.properties.Property.set
+[WARNING] stderr:   File "kivy\properties.pyx", line 599, in kivy.properties.Property.dispatch
+[WARNING] stderr:   File "kivy\_event.pyx", line 1214, in kivy._event.EventObservers.dispatch
+[WARNING] stderr:   File "kivy\_event.pyx", line 1120, in kivy._event.EventObservers._dispatch
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\screenmanager.py", line 1038, in on_current
+[WARNING] stderr:     screen = self.get_screen(value)
+[WARNING] stderr:   File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\uix\screenmanager.py", line 1064, in get_screen
+[WARNING] stderr:     raise ScreenManagerException('No Screen with name "%s".' % name)
+[WARNING] stderr: kivy.uix.screenmanager.ScreenManagerException: No Screen with name "None".

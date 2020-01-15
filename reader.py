@@ -22,15 +22,19 @@ from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout   # one of many layout structures
 from kivy.uix.label import Label
 from kivy.uix.button import Button
+from kivy.uix.image import Image
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.textinput import TextInput
 from kivy.properties import ObjectProperty, StringProperty, NumericProperty
 
 from download_html import get_html
-from database import data
+import webscrapper2
+from database import *
+
+data, header = open_recent_data()
 
 class TheMain(App):
-        """Contains all common elements to all pages : 
+        """Contains all common elements to all pages :
         ScreenManager, style, credits, Header(togglable)"""
         def build(self):
                 sm = ScreenManager()
@@ -44,13 +48,13 @@ class FrontPage(GridLayout, Screen):
         """Entry point to the app :
         Get the latest article from the favorite news site, or random?
         Shows if sites are up/down/changed/lastSync"""
-        
+
         search_input = ObjectProperty(None)
         search_button = ObjectProperty(None)
         summary_button = ObjectProperty(None)
-		sites_status_button = ObjectProperty(None)
+        sites_status_button = ObjectProperty(None)
         refresh_button = ObjectProperty(None)
-        
+
         def __init__(self, **kwargs):
                 super(FrontPage, self).__init__(**kwargs)
 
@@ -76,18 +80,18 @@ class FrontPage(GridLayout, Screen):
         def search(self, search_input, *args):
                 self.search_button.text = "Got searched"
                 print(self.search_input.text)
-        
-		def changer(self, *args, target=None):
+
+        def changer(self, *args, target=None):
                 print(f"changing to {target} ")
                 self.manager.current = str(target)
 
         def refresh_all(self, *args):
                 print("refreshing")
                 #get_html()
-                #import get_titles
-                #from database import data
-                SummaryPage.clear_widgets(self)
-                SummaryPage.load_titles_to_page(self)
+                import get_titles
+                data, header = open_recent_data()
+                #SummaryPage.clear_widgets(SummaryPage)
+                SummaryPage.load_titles_to_page(SummaryPage)
                 print("refreshed")
 
 """class ArticleBehavior(ButtonBehavior):
@@ -105,33 +109,30 @@ class FrontPage(GridLayout, Screen):
 class SummaryPage(GridLayout, Screen):
         """the list of articles scrapped.
         With option to group by ['Source', 'Keyword', 'Date', 'Author?']
-        That's like a table 
+        That's like a table
         ["Source", "Datetime",
-        "Title", "Image", 
+        "Title", "Image",
         "Extract"],
         [Next] """
 
         front_page_button = ObjectProperty(None)
-        
+
         def __init__(self, **kwargs):
                 super(SummaryPage, self).__init__(**kwargs)
                 self.cols = 1
                 self.load_titles_to_page(self)
        
         def load_titles_to_page(self, *args):
-                root = ScrollView()
+                self.scroll_view = ScrollView()
                 self.TitlesLayout = GridLayout(cols = 1,
                                           #rows = 50,
                                           #spacing = 25,
                                           size_hint=(1,None),
                                           )
-                #self.TitlesLayout.bind(minimum_height=self.setter('height'))
-                
-                self.load_titles_to_page()
-                root.add_widget(self.TitlesLayout)
-                self.add_widget(root)
+
                 #display all titles available for all sites
                 index = 0
+                data, _ = open_recent_data()
                 for site in data.keys():
                         #create a label for each title found
                         for i, d in enumerate(data[site]):
@@ -143,23 +144,24 @@ class SummaryPage(GridLayout, Screen):
                                                        markup=True,
                                                        on_ref_press=self.browser,
                                                        #text_size = TitlesLayout.size,
-                                                       #halign = 'left',                                                       
+                                                       #halign = 'left',
                                                        #valign = 'center',
                                                        #strip = True,
                                                        )
                                 self.TitlesLayout.add_widget(self.reference, index=index)
                                 index +=1
                                 print(self.reference.text, index, sep="\t")
-                                
+                #self.load_titles_to_page()
+                #self.TitlesLayout.bind(minimum_height=self.setter('height'))
+
                 #Back to "Menu"/Front Page
                 self.menu_btn = Button(text="Front Page")
-                self.menu_btn.bind(lambda x: on_press=self.changer("FrontPage")
-                
+                self.menu_btn.bind(on_press=lambda x: self.changer(target="FrontPage"))
                 self.TitlesLayout.add_widget(self.menu_btn)
-                
-                
-                
-        
+                self.scroll_view.add_widget(self.TitlesLayout)
+                self.add_widget(self.scroll_view)
+
+
         def changer(self, *args, target=None):
                 print(f"changing to {target} ")
                 self.manager.current = str(target)
@@ -167,7 +169,6 @@ class SummaryPage(GridLayout, Screen):
         def browser(self, *args):
                 import webbrowser
                 webbrowser.open(args[1])
-
 
 
 class UpdateSource(Button):
@@ -189,7 +190,7 @@ class SitesStatusPage(GridLayout, Screen):
                         #Add "ButtonGrid"
                         self.site_box = GridLayout()
                         self.site_box.cols = 2
-                        
+
                         #Add site name
                         name = site
                         text = f'[ref={site}]{site}[/ref]'
@@ -200,7 +201,7 @@ class SitesStatusPage(GridLayout, Screen):
                         self.site_box.reference.refresh_site_status_btn.refresh_logo = Image(source=os.path.join("icon", "refresh_logo.png"))
                         self.site_box.reference.refresh_site_status_btn.add_widget(self.site_box.reference.refresh_site_status_btn.refresh_logo)
                         self.site_box.reference.refresh_site_status_btn.bind(on_press=lambda x: self.refresh_site_status(site=site))
-                        
+
                         self.site_box.reference.add_widget(self.site_box.reference.refresh_site_status_btn)
                         self.add_widget(self.site_box.reference)
 
@@ -211,7 +212,7 @@ class SitesStatusPage(GridLayout, Screen):
         def browser(self, *args):
                 import webbrowser
                 webbrowser.open(args[1])
-        
+
         def refresh_site_status(self, *args, site=""):
                 print(f"refreshing {site}")
 

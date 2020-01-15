@@ -2,6 +2,7 @@ import pandas as pd
 import json
 import os.path
 pjoin = os.path.join
+from bs4 import BeautifulSoup
 
 df = pd.read_excel("news_sites_and_title_class.xlsx")
 

@@ -1,0 +1,28 @@
+[INFO   ] Logger: Record log in C:/Users/bharkins/Desktop/news\logs\kivy_20-01-15_0.txt
+[INFO   ] Kivy: v1.11.1
+[INFO   ] Kivy: Installed at "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\__init__.py"
+[INFO   ] Python: v3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)]
+[INFO   ] Python: Interpreter at "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\python.exe"
+[INFO   ] Factory: 184 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_gif (img_sdl2, img_pil, img_ffpyplayer ignored)
+[CRITICAL] Window: Unable to find any valuable Window provider. Please enable debug logging (e.g. add -d if running from the command line, or change the log level in the config) and re-run your app to identify potential causes
+sdl2 - ImportError: DLL load failed: Le module spécifié est introuvable.
+  File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\core\__init__.py", line 63, in core_select_lib
+    fromlist=[modulename], level=0)
+  File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\core\window\window_sdl2.py", line 27, in <module>
+    from kivy.core.window._window_sdl2 import _WindowSDL2Storage
+
+[CRITICAL] Text: Unable to find any valuable Text provider. Please enable debug logging (e.g. add -d if running from the command line, or change the log level in the config) and re-run your app to identify potential causes
+sdl2 - ImportError: DLL load failed: Le module spécifié est introuvable.
+  File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\core\__init__.py", line 63, in core_select_lib
+    fromlist=[modulename], level=0)
+  File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\core\text\text_sdl2.py", line 13, in <module>
+    from kivy.core.text._text_sdl2 import (_SurfaceContainer, _get_extents,
+
+pil - ModuleNotFoundError: No module named 'PIL'
+  File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\core\__init__.py", line 63, in core_select_lib
+    fromlist=[modulename], level=0)
+  File "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\core\text\text_pil.py", line 7, in <module>
+    from PIL import Image, ImageFont, ImageDraw
+
+[CRITICAL] App: Unable to get a Text provider, abort.

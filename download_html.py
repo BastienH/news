@@ -8,8 +8,8 @@ from time import time
 
 
 import sys
-sys.path.insert(1, r"C:\Users\NG8203C\Desktop\CodeBase\Scripts")
-from secret import proxies
+#sys.path.insert(1, r"C:\Users\NG8203C\Desktop\CodeBase\Scripts")
+#from secret import proxies
 import requests_html as req
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)

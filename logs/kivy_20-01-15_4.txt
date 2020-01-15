@@ -1,0 +1,33 @@
+[INFO   ] Logger: Record log in C:/Users/bharkins/Desktop/news\logs\kivy_20-01-15_4.txt
+[INFO   ] deps: Successfully imported "kivy_deps.gstreamer" 0.2.0
+[INFO   ] deps: Successfully imported "kivy_deps.angle" 0.2.0
+[INFO   ] deps: Successfully imported "kivy_deps.glew" 0.2.0
+[INFO   ] deps: Successfully imported "kivy_deps.sdl2" 0.2.0
+[INFO   ] Kivy: v1.11.1
+[INFO   ] Kivy: Installed at "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\lib\site-packages\kivy\__init__.py"
+[INFO   ] Python: v3.7.6 (tags/v3.7.6:43364a7ae0, Dec 19 2019, 00:42:30) [MSC v.1916 64 bit (AMD64)]
+[INFO   ] Python: Interpreter at "C:\Users\bharkins\AppData\Local\Programs\Python\Python37\python.exe"
+[INFO   ] Factory: 184 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_gif (img_pil, img_ffpyplayer ignored)
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL" graphics system
+[INFO   ] GL: GLEW initialization succeeded
+[INFO   ] GL: Backend used <glew>
+[INFO   ] GL: OpenGL version <b'4.5.0 NVIDIA 358.87'>
+[INFO   ] GL: OpenGL vendor <b'NVIDIA Corporation'>
+[INFO   ] GL: OpenGL renderer <b'Quadro K2200/PCIe/SSE2'>
+[INFO   ] GL: OpenGL parsed version: 4, 5
+[INFO   ] GL: Shading version <b'4.50 NVIDIA'>
+[INFO   ] GL: Texture max size <16384>
+[INFO   ] GL: Texture max units <32>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[INFO   ] Text: Provider: sdl2
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "C:/Users/bharkins/Desktop/news/reader.py", line 30, in <module>
+[WARNING] stderr:     from database import data
+[WARNING] stderr:   File "C:\Users\bharkins\Desktop\news\database.py", line 14, in <module>
+[WARNING] stderr:     with open(newest('JSON')) as f:
+[WARNING] stderr:   File "C:\Users\bharkins\Desktop\news\database.py", line 7, in newest
+[WARNING] stderr:     files = os.listdir(path)
+[WARNING] stderr: FileNotFoundError: [WinError 3] Le chemin d’accès spécifié est introuvable: 'JSON'
