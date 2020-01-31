@@ -1,6 +1,6 @@
 """Here we make a cross platform application to read articles from any determined source
-This includes : 
-a Front-Page, with a highligh article (La Une) 
+This includes :
+a Front-Page, with a highligh article (La Une)
 
 some "KPI"
 A search
@@ -9,7 +9,11 @@ Monitoring : a check to see which sites are up and which are down
 Communication : a way to send an communication to all these sites... an email?
 """
 import os
-os.environ['KIVY_HOME'] = os.path.dirname(__file__)
+os.environ['KIVY_HOME'] = os.path.dirname(__file__) # To run on Windows
+os.environ['KIVY_HOME'] = os.path.dirname('/Applications/Kivy.app/') # To run on Mac
+
+os.environ['KIVY_TEXT'] = 'pil'
+
 
 import kivy
 from kivy.app import App
@@ -121,7 +125,7 @@ class SummaryPage(GridLayout, Screen):
                 super(SummaryPage, self).__init__(**kwargs)
                 self.cols = 1
                 self.load_titles_to_page(self)
-       
+
         def load_titles_to_page(self, *args):
                 self.scroll_view = ScrollView()
                 self.TitlesLayout = GridLayout(cols = 1,
@@ -159,7 +163,7 @@ class SummaryPage(GridLayout, Screen):
                 self.menu_btn.bind(on_press=lambda x: self.changer(target="FrontPage"))
                 self.TitlesLayout.add_widget(self.menu_btn)
                 self.scroll_view.add_widget(self.TitlesLayout)
-                self.add_widget(self.scroll_view)
+                #self.add_widget(self.scroll_view)
 
 
         def changer(self, *args, target=None):
