@@ -10,7 +10,9 @@ Communication : a way to send an communication to all these sites... an email?
 """
 import os
 os.environ['KIVY_HOME'] = os.path.dirname(__file__) # To run on Windows
-os.environ['KIVY_HOME'] = os.path.dirname('/Applications/Kivy.app/') # To run on Mac
+from getpass import getuser
+if getuser == 'bast':
+    getuseros.environ['KIVY_HOME'] = os.path.dirname('/Applications/Kivy.app/') # To run on Mac
 
 os.environ['KIVY_TEXT'] = 'pil'
 
