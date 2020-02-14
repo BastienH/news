@@ -9,7 +9,6 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
-
 class dissect_HTML:
     """
     Extract the required data from an HTML
@@ -18,10 +17,12 @@ class dissect_HTML:
     """
     def __init__(self, path, HTML_attributes_source, titles_limit=None):
         self.path = path
+        self.soup = str()
         self.HTML_attributes = pd.read_excel(HTML_attributes_source)
         self.titles_limit = titles_limit
         self.ALL_TITLES = {}
         self.ALL_TITLES['header'] = {}
+        
         
     def get_titles_for_site(self, attributes):
         """
@@ -32,11 +33,14 @@ class dissect_HTML:
         title_id = attributes['titles_id']
         title_text = attributes['title_text']
         title_text2 = attributes['title_text2']
+
+        self.make_soup(Name)
+        assert soup != str(), 'No soup to get titles from'
  
         #Read the column from the sources file that defines the attribute and value for the titles on this specific page.
         title_attrs = {title_type: titles_id}
                        
-        all_titles_in_soup = soup.find_all(attrs=title_attrs)[:self.titles_limit]
+        all_titles_in_soup = self.soup.find_all(attrs=title_attrs)[:self.titles_limit]
         all_titles_in_soup = [t.strip() for t in all_titles_soup]
         
 
@@ -66,11 +70,16 @@ class dissect_HTML:
         self.ALL_TITLES[Name] = all_titles_and_urls #and we associate each list to the site's Name
         self.ALL_TITLES['header'][Name] = len(all_titles_in_soup)#add a header containing summary information, currently only the number of articles
 
-    @staticmethod
+    def make_soup(self, name):
+        path_to_html = join(self.path, name)
+        with open(path_to_html, 'r', encoding='utf-8') as f:
+            content = f.read()
+            soup = BeautifulSoup(content, 'html.parser')
+        self.soup = soup
+
     def clean_title(title):
         pass
-    
-    @staticmethod
+
     def get_path_for_title(tag):
         try :
             path = tag.find_parent('a', href=True)["href"]
