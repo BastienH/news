@@ -8,8 +8,6 @@ from time import time
 
 
 import sys
-#sys.path.insert(1, r"C:\Users\NG8203C\Desktop\CodeBase\Scripts")
-#from secret import proxies
 import requests_html as req
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -28,8 +26,6 @@ def get_html():
         start = time()        
         URL = row['URL']        
         #Connection
-        #r = session.get(URL, proxies=proxies, verify=False)
-        #We try to connect to the site
         try:
             r = session.get(URL, verify=False)
         #If it doesn't work, we just go to the next site.
