@@ -20,7 +20,7 @@ ALL_TITLES['header'] = {}
 
 for index, row in df.iterrows(): #for each site we have referenced
     URL = row['URL']
-    
+
     with open(join("HTML", f"{row['Name']}.html"), 'r', encoding='utf-8') as f:
         content = f.read()
         soup = BeautifulSoup(content, 'html.parser')
@@ -39,9 +39,9 @@ for index, row in df.iterrows(): #for each site we have referenced
 
             title = title_text
             print(title)
-            
+
     print(f"Titles found for {row['Name']} : {len(all_titles_in_soup)}")
-    
+
     all_titles_and_urls = []
 
     #here we just get the URL for each title
@@ -59,9 +59,9 @@ for index, row in df.iterrows(): #for each site we have referenced
             tag = tag.split("\n\n\n")[0]
         except TypeError:
             pass
-            
+
         title_and_url = (tag.text.strip(), URL+link) #title_and_url is simply a tuple of the TITLE and the URL
-        all_titles_and_urls.append(title_and_url) 
+        all_titles_and_urls.append(title_and_url)
 
     ALL_TITLES[row['Name']] = all_titles_and_urls #and we associate each list to the site's Name
     ALL_TITLES['header'][row['Name']] = len(all_titles_in_soup)#add a header containing summary information, currently only the number of articles
@@ -69,12 +69,12 @@ for index, row in df.iterrows(): #for each site we have referenced
     #Write to JSON file with timestamp
     now = datetime.now()
     now = now.strftime("%Y%m%d_%H%M")
-    
-with open(join('JSON', f'titles_{now}.json'), 'w+') as file:
+
+with open(join('JSON', f'titles_{now}.json'), 'w+', encoding='utf-8') as file:
         json.dump(ALL_TITLES, file, indent=2)
         print(f'{file.name} written')
 
-    
+
 """c = 0
 for i in ALL_TITLES_list:
         if c < 10:
@@ -84,7 +84,3 @@ for i in ALL_TITLES_list:
         else:
                 pass
         c += 1"""
-
-
-
-	

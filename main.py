@@ -8,14 +8,11 @@ Reading : a Menu to access all articles currently up
 Monitoring : a check to see which sites are up and which are down
 Communication : a way to send an communication to all these sites... an email?
 """
-import os
-os.environ['KIVY_HOME'] = os.path.dirname(__file__) # To run on Windows
-from getpass import getuser
-if getuser == 'bast':
-    os.environ['KIVY_HOME'] = os.path.dirname('/Applications/Kivy.app/') # To run on Mac
 
-os.environ['KIVY_TEXT'] = 'pil'
-
+try:
+    import config
+except ModuleNotFoundError:
+    print("No config file")
 
 import kivy
 from kivy.app import App
@@ -34,6 +31,7 @@ from kivy.uix.textinput import TextInput
 from kivy.properties import ObjectProperty, StringProperty, NumericProperty
 
 from download_html import get_html
+from utils import *
 import webscrapper2
 from database import *
 
@@ -93,12 +91,13 @@ class FrontPage(GridLayout, Screen):
 
         def refresh_all(self, *args):
                 print("refreshing")
-                #get_html()
-                import get_titles
-                data, header = open_recent_data()
-                #SummaryPage.clear_widgets(SummaryPage)
-                SummaryPage.load_titles_to_page(SummaryPage)
-                print("refreshed")
+                if online():
+                    get_html()
+                    import get_titles
+                    data, header = open_recent_data()
+                    #SummaryPage.clear_widgets(SummaryPage)
+                    SummaryPage.load_titles_to_page(SummaryPage)
+                    print("refreshed")
 
 """class ArticleBehavior(ButtonBehavior):
         def __init__(self, **kwargs):
