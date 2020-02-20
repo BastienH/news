@@ -1,7 +1,7 @@
 """Here we make a cross platform application to read articles from any determined source
 This includes :
 a Front-Page, with a highligh article (La Une)
-
+__version__ = '0.1.0'
 some "KPI"
 A search
 Reading : a Menu to access all articles currently up

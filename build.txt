@@ -1,2 +1,2 @@
-p4a --debug apk --private $HOME/Projects/news/news --package=org.python.news --name "News" --version 0.1 --bootstrap=sdl2 --requirements=python3,kivy,requests --sdk-dir='/Users/bast/Library/Android/sdk' --android_api=26 --jdk-dir='/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk'
+p4a --debug apk --private $HOME/Projects/news/news --package=org.python.news --name "News" --version 0.1 --bootstrap=sdl2 --requirements=python3,kivy,requests --sdk-dir='/Users/bast/Library/Android/sdk' --android_api=29 --jdk-dir='/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk'
 # https://stackoverflow.com/questions/46402772/failed-to-install-android-sdk-java-lang-noclassdeffounderror-javax-xml-bind-a
