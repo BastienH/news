@@ -91,9 +91,9 @@ class dissect_HTML:
                 path = str()
         return path
 
-    def get_titles_for_all(self):
+    def get_titles_for_all_sites(self):
         """
-        searches for titles and their paths.
+        applies get_titles_for_site to all sites.
         """
         for index, attributes in self.HTML_attributes.iterrows(): #for each site we have referenced
             self.get_titles_for_site(attributes)
@@ -107,8 +107,8 @@ if __name__ == "__main__":
     now = now.strftime("%Y%m%d_%H%M")
 
     dissect = dissect_HTML("HTML", "news_sites_and_title_class.xlsx", titles_limit = 2)
-    dissect.get_titles_for_all()
-    ALL_TITLES = dissect.get_titles_for_all()
+    dissect.get_titles_for_all_sites()
+    ALL_TITLES = dissect.get_titles_for_all_sites()
 
     with open(join('JSON', f'titles_{now}.json'), 'w+', encoding='utf-8') as file:
             json.dump(ALL_TITLES, file, indent=2)
